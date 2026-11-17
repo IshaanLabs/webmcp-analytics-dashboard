@@ -158,3 +158,19 @@ Invalid input is rejected with a message that lists the allowed values. For exam
 
 Read tools never change the screen on purpose. Write tools do. Dynamic tools are registered and removed with an `AbortSignal` as the dashboard state changes, so the agent only sees tools that make sense right now.
 
+## Notes
+
+- **WebMCP is experimental.** It is an origin trial from Chrome 149, and names and signatures may change. This project uses `document.modelContext`, with a fallback to `navigator.modelContext`.
+- **The data is mock data.** It is generated from a fixed seed, so every load is identical.
+- **Badge says "WebMCP unavailable".** The flag is off, Chrome is older than 146, or the page is not on `localhost` or HTTPS. In the console, `typeof document.modelContext` should be `"object"`.
+- **The Inspector chat does nothing.** Switch the model with the Inspector's radio buttons, since the default can be slow or unavailable for your key. To check the key, request `https://generativelanguage.googleapis.com/v1beta/models` with an `x-goog-api-key` header. It should return 200.
+- **Prompts feel slow.** Use a fast Gemini Flash model, and run the first prompt once before presenting.
+- **A tool did not remove itself.** This build removes tools with an `AbortSignal`. If a Chrome update changes the API, check the current WebMCP spec.
+
+## Contributing
+
+Contributions to this project are welcome! If you have ideas for improvements, bug fixes, or new features, feel free to open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the MIT License - see the [MIT License](LICENSE) file for details.
